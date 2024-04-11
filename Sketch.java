@@ -1,36 +1,76 @@
 import processing.core.PApplet;
+/*
+ * description: this code draws an object at various locations in different colours
+ * 
+ * @author: NJudd 
+ */
 
 public class Sketch extends PApplet {
-	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+  // screen size
   public void settings() {
-	// put your size call here
-    size(400, 400);
+    size(920, 420);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
+  // background colour
   public void setup() {
-    background(210, 255, 173);
+    background(225);
   }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
+  // calls methods
   public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
-
-    stroke(255);
-    line(50, 125, 70, 50);  
+    // calls draw house
+    drawHouse(35, 61, 77, 0, 0);
+    drawHouse(254, 127, 45, 0, 80);
+    drawHouse(252, 202, 70, 0, 160);
+    drawHouse(161, 193, 129, 0, 240);
+    drawHouse(97, 155, 138, 0, 320);
+    // calls draw circle
+    drawCircle(40, 120, 160, 20);
+    drawCircle(40, 60, 80, 20);
   }
-  
-  // define other methods down here.
+
+  // draw house method
+  private void drawHouse(int intR, int intG, int intB, int intPosX, int intPosY) {
+    // calculates x position of the house
+    for (int i = 0; i <= 15; i++) {
+      // initializes varibles
+      int intRow = (i * 40 + i * 20);
+      // colour
+      stroke(intR, intG, intB);
+      fill(intR, intG, intB);
+      // base and ceiling
+      line(intPosX + 20 + intRow, intPosY + 40, intPosX + 60 + intRow, intPosY + 40);
+      line(intPosX + 20 + intRow, intPosY + 80, intPosX + 60 + intRow, intPosY + 80);
+      // walls
+      line(intPosX + 20 + intRow, intPosY + 40, intPosX + 20 + intRow, intPosY + 80);
+      line(intPosX + 60 + intRow, intPosY + 40, intPosX + 60 + intRow, intPosY + 80);
+      // roof
+      triangle(intPosX + 20 + intRow, intPosY + 40, intPosX + 40 + intRow, intPosY + 20, intPosX + 60 + intRow,
+          intPosY + 40);
+      // door
+      line(intPosX + 32 + intRow, intPosY + 80, intPosX + 32 + intRow, intPosY + 60);
+      line(intPosX + 48 + intRow, intPosY + 80, intPosX + 48 + intRow, intPosY + 60);
+      line(intPosX + 32 + intRow, intPosY + 60, intPosX + 48 + intRow, intPosY + 60);
+      // doornob
+      ellipse(intPosX + 42 + intRow, intPosY + 71, 2, 2);
+    }
+  }
+
+  // draw circle method
+  private void drawCircle(int intColor, int intPosX, int intPosY, int intDia) {
+    // calculates x position of the circle
+    for (int i = 0; i < 7; i++) {
+      // calculates y position of the circle
+      for (int j = 0; j < 2; j++) {
+        // initializes variables
+        int intRow = (i * 40 + i * 20) * 2 + 10;
+        int intColumn = (j * 60 + j * 20) * 2 + 15;
+        // colour
+        stroke(intColor);
+        fill(intColor);
+        // draws circle
+        ellipse(intPosX + intRow, intPosY + intColumn, intDia, intDia);
+      }
+    }
+  }
 }
