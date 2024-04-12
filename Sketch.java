@@ -1,6 +1,6 @@
 import processing.core.PApplet;
 /*
- * description: this code draws an object at various locations in different colours
+ * description: this code draws multiple objects at various locations in different colours
  * 
  * @author: NJudd 
  */
@@ -8,32 +8,32 @@ import processing.core.PApplet;
 public class Sketch extends PApplet {
   // screen size
   public void settings() {
-    size(920, 420);
+    size(1100, 550);
   }
 
   // background colour
   public void setup() {
-    background(225);
+    background(220);
   }
 
   // calls methods
   public void draw() {
-    // calls draw house
-    drawHouse(35, 61, 77, 0, 0);
-    drawHouse(254, 127, 45, 0, 80);
-    drawHouse(252, 202, 70, 0, 160);
-    drawHouse(161, 193, 129, 0, 240);
-    drawHouse(97, 155, 138, 0, 320);
+    // calls draw house for the left side
+    drawHouse(35, 61, 77, 30, 60);
+    drawHouse(254, 127, 45, 30, 140);
+    drawHouse(252, 202, 70, 30, 220);
+    drawHouse(161, 193, 129, 30, 300);
+    drawHouse(97, 155, 138, 30, 380);
     // calls draw circle
-    drawCircle(40, 120, 160, 20);
-    drawCircle(40, 60, 80, 20);
+    drawCircle(40, 90, 145, 20);
+    drawCircle(40, 150, 225, 20);
   }
 
   // draw house method
   private void drawHouse(int intR, int intG, int intB, int intPosX, int intPosY) {
     // calculates x position of the house
-    for (int i = 0; i <= 15; i++) {
-      // initializes varibles
+    for (int i = 0; i <= 16; i++) {
+      // spacing
       int intRow = (i * 40 + i * 20);
       // colour
       stroke(intR, intG, intB);
@@ -59,10 +59,10 @@ public class Sketch extends PApplet {
   // draw circle method
   private void drawCircle(int intColor, int intPosX, int intPosY, int intDia) {
     // calculates x position of the circle
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 8; i++) {
       // calculates y position of the circle
       for (int j = 0; j < 2; j++) {
-        // initializes variables
+        // spacing
         int intRow = (i * 40 + i * 20) * 2 + 10;
         int intColumn = (j * 60 + j * 20) * 2 + 15;
         // colour
