@@ -1,38 +1,69 @@
 import processing.core.PApplet;
-/*
- * description: this code draws multiple objects at various locations in different colours
+/**
+ * draws multiple objects at various locations in different colours
  * 
- * @author: NJudd 
+ * @author NJudd 
  */
 
 public class Sketch extends PApplet {
-  // screen size
+  /**
+   * initializes screen size
+   * 
+   * @author Njudd
+   */
   public void settings() {
     size(1100, 550);
   }
 
-  // background colour
+  /**
+   * initializes background colour
+   * 
+   * @author NJudd
+   */
   public void setup() {
     background(220);
   }
 
-  // calls methods
+  /**
+   * top level method to execute the program
+   * 
+   * @author NJudd
+   */
   public void draw() {
     // calls draw house for the left side
-    drawHouse(35, 61, 77, 30, 60);
-    drawHouse(254, 127, 45, 30, 140);
-    drawHouse(252, 202, 70, 30, 220);
-    drawHouse(161, 193, 129, 30, 300);
-    drawHouse(97, 155, 138, 30, 380);
-    // calls draw circle
-    drawCircle(40, 90, 145, 20);
-    drawCircle(40, 150, 225, 20);
+    drawHouse(35, 61, 77, 0, 60);
+    drawHouse(254, 127, 45, 0, 140);
+    drawHouse(252, 202, 70, 0, 220);
+    drawHouse(161, 193, 129, 0, 300);
+    drawHouse(97, 155, 138, 0, 380);
+    // calls draw house for the right side
+    drawHouse(35, 61, 77, 660, 60);
+    drawHouse(254, 127, 45, 660, 140);
+    drawHouse(252, 202, 70, 660, 220);
+    drawHouse(161, 193, 129, 660, 300);
+    drawHouse(97, 155, 138, 660, 380);
+    // calls draw circle for the left side
+    drawCircle(40, 60, 145, 20);
+    drawCircle(40, 120, 225, 20);
+    // calls draw circle for the right side
+    drawCircle(40, 720, 145, 20);
+    drawCircle(40, 780, 225, 20);
   }
 
-  // draw house method
+  /**
+   * prints an array of houses
+   * 
+   * @param intR    red value of the house colour
+   * @param intG    green value of the house colour
+   * @param intB    blue value of the house colour
+   * @param intPosX x coordinate of the house
+   * @param intPosY y coordinate of the house
+   * 
+   * @author NJudd
+   */
   private void drawHouse(int intR, int intG, int intB, int intPosX, int intPosY) {
     // calculates x position of the house
-    for (int i = 0; i <= 16; i++) {
+    for (int i = 0; i <= 6; i++) {
       // spacing
       int intRow = (i * 40 + i * 20);
       // colour
@@ -56,10 +87,19 @@ public class Sketch extends PApplet {
     }
   }
 
-  // draw circle method
+  /**
+   * prints an array of circles
+   * 
+   * @param intColor rgb value of the circle colour
+   * @param intPosX x coordinate of the circle centre
+   * @param intPosY y coordinate of the circle centre
+   * @param intDia diameter of the circle
+   * 
+   * @author NJudd
+   */
   private void drawCircle(int intColor, int intPosX, int intPosY, int intDia) {
     // calculates x position of the circle
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 3; i++) {
       // calculates y position of the circle
       for (int j = 0; j < 2; j++) {
         // spacing
