@@ -1,8 +1,9 @@
 import processing.core.PApplet;
+
 /**
  * draws multiple objects at various locations in different colours
  * 
- * @author NJudd 
+ * @author NJudd
  */
 
 public class Sketch extends PApplet {
@@ -48,6 +49,8 @@ public class Sketch extends PApplet {
     // calls draw circle for the right side
     drawCircle(40, 720, 145, 20);
     drawCircle(40, 780, 225, 20);
+    // calls draw mansion and findX
+    drawMansion(40, findX(1100), 425);
   }
 
   /**
@@ -91,9 +94,9 @@ public class Sketch extends PApplet {
    * prints an array of circles
    * 
    * @param intColor rgb value of the circle colour
-   * @param intPosX x coordinate of the circle centre
-   * @param intPosY y coordinate of the circle centre
-   * @param intDia diameter of the circle
+   * @param intPosX  x coordinate of the circle centre
+   * @param intPosY  y coordinate of the circle centre
+   * @param intDia   diameter of the circle
    * 
    * @author NJudd
    */
@@ -112,5 +115,48 @@ public class Sketch extends PApplet {
         ellipse(intPosX + intRow, intPosY + intColumn, intDia, intDia);
       }
     }
+  }
+
+  /**
+   * calculates x coordinate of the bottom left corner of the mansion
+   * 
+   * @param intScreenWidth width of the screen
+   * 
+   * @return intPosX the value of the x coordinate
+   * 
+   * @author NJudd
+   */
+  private int findX(int intScreenWidth) {
+    int intPosX = intScreenWidth / 2 - 100;
+    return intPosX;
+  }
+
+  /**
+   * prints the mansion
+   * 
+   * @param intColor colour of the mansion
+   * @param intPosX  x coordinate of the mansion
+   * @param intPosY  y coordinate of the mansion
+   * 
+   * @author NJudd
+   */
+  private void drawMansion(int intColor, int intPosX, int intPosY) {
+    // colour
+    stroke(intColor);
+    fill(intColor);
+    // base and ceiling
+    line(intPosX, intPosY, intPosX + 200, intPosY);
+    line(intPosX, intPosY - 200, intPosX + 200, intPosY - 200);
+    // walls
+    line(intPosX, intPosY, intPosX, intPosY - 200);
+    line(intPosX + 200, intPosY, intPosX + 200, intPosY - 200);
+    // roof
+    triangle(intPosX, intPosY - 200, intPosX + 100, intPosY - 300, intPosX + 200, intPosY - 200);
+    // door
+    line(intPosX + 70, intPosY, intPosX + 70, intPosY - 80);
+    line(intPosX + 130, intPosY, intPosX + 130, intPosY - 80);
+    line(intPosX + 70, intPosY - 80, intPosX + 130, intPosY - 80);
+    // doornob
+    ellipse(intPosX + 110, intPosY - 37, 10, 10);
   }
 }
